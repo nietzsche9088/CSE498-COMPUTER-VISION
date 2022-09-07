@@ -1,5 +1,6 @@
 # *_*coding:utf-8 *_*
 import numpy as np
+#import cv2
 def Meanfilter(img, size):
     K = np.full((size, size), 1 / (size ** 2))
 
@@ -9,6 +10,7 @@ def Meanfilter(img, size):
     pad = size // 2
     I = np.zeros((H + pad * 2, W + pad * 2, C), np.float32)
     I[pad:pad + H, pad:pad + W] = img.copy().astype(np.float32)
+    #I = cv2.copyMakeBorder(img,pad,pad,pad,pad,cv2.BORDER_REPLICATE)
     tmp = I.copy()
 
     for c in range(C):

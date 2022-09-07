@@ -15,6 +15,7 @@ def Gkernel(img, size, sigma):
     K /= (2 * np.pi * (sigma ** 2))
     # by 1/sum essential
     K /= K.sum()
+    #K = np.array([[1 / 16, 1 / 8, 1 / 16], [1 / 8, 1 / 4, 1 / 8], [1 / 16, 1 / 8, 1 / 16]])
 
     tmp = I.copy()
     for c in range(C):

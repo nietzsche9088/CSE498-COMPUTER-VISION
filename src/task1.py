@@ -2,8 +2,7 @@
 from PIL import Image
 import numpy as np
 import os
-from src import GuassianFilter
-
+from src import GaussianFilter
 
 
 def task1():
@@ -11,13 +10,13 @@ def task1():
     imgs = os.listdir(folder_path)
     imgNum = len(imgs)
     for i in range(imgNum):
-        img = Image.open(folder_path+imgs[i])
+        img = Image.open(folder_path+imgs[i]).convert('RGB')
         img = np.array(img)
 
-        G = GuassianFilter.Gkernel(img, 3, 1.0)
+        G = GaussianFilter.Gkernel(img, 3, 1.0)
         D = img - G
         I = img + D
 
-        output = Image.fromarray(I, 'RGB')
+        output = Image.fromarray(I,'RGB')
         output.save("../output/task1/enhanced_"+imgs[i])
     return 0
